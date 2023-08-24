@@ -1,0 +1,1864 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+    <Script file="TWEncounterJournal.lua"/>
+
+    <GameTooltip name="TWEJToolTip" inherits="GameTooltipTemplate" parent="UIParent" hidden="true"/>
+
+    <Frame name="TWEJDungeonButtonTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="258" y="96"/>
+        </Size>
+        <!--        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"-->
+        <!--                  tile="false">-->
+        <!--        </Backdrop>-->
+        <Anchors>
+            <Anchor point="TOPLEFT">
+                <Offset>
+                    <AbsDimension x="0" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Frames>
+
+            <Button name="$parentButton" inherits="UIPanelButtonTemplate" text="">
+                <NormalTexture name="$parentNormalTexture"
+                               file="Interface\addons\TWEncounterJournal\images\dungeon_button_normal">
+                    <Size>
+                        <AbsDimension x="240" y="120"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+                <HighlightTexture name="$parentHighlightTexture" alphaMode="ADD"
+                                  file="Interface\addons\TWEncounterJournal\images\dungeon_button_highlight">
+                    <Size>
+                        <AbsDimension x="240" y="120"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </HighlightTexture>
+                <PushedTexture name="$parentPushedTexture"
+                               file="Interface\addons\TWEncounterJournal\images\dungeon_button_pushed">
+                    <Size>
+                        <AbsDimension x="240" y="120"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </PushedTexture>
+                <Size>
+                    <AbsDimension x="164" y="89"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture name="$parentBackground"
+                                 file="Interface\addons\TWEncounterJournal\images\button\ui-ej-dungeonbutton-blackfathomdeeps">
+                            <Size>
+                                <AbsDimension x="240" y="120"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT"/>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        <FontString name="$parentName" text="Backfathom Deeps"
+                                    font="Fonts\MORPHEUS.TTF"
+                                    justifyV="top">
+                            <Color r="0.8" g="0.7" b="0" a="1"/>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <FontHeight val="18"/>
+                            <Anchors>
+                                <Anchor point="TOP">
+                                    <Offset>
+                                        <AbsDimension x="0" y="-15"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsDimension x="150" y="88"/>
+                            </Size>
+                        </FontString>
+                    </Layer>
+
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        LoadDungeon_OnClick(this:GetID())
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+        </Frames>
+    </Frame>
+
+    <Frame name="TWEJBossTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="678" y="60"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT">
+                <Offset>
+                    <AbsDimension x="0" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString name="$parentName" inherits="GameFontNormalLarge"
+                            justifyH="LEFT"
+                            justifyV="CENTER"
+                            text="Wingname">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="25" y="-15"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsDimension x="165" y="32"/>
+                    </Size>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button name="$parentButton" inherits="UIPanelButtonTemplate" text="">
+                <NormalTexture name="$parentNormalTexture"
+                               file="Interface\addons\TWEncounterJournal\images\boss_list_normal">
+                    <Size>
+                        <AbsDimension x="460" y="115"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+                <HighlightTexture name="$parentHighlightTexture" alphaMode="ADD"
+                                  file="Interface\addons\TWEncounterJournal\images\boss_list_highlight">
+                    <Size>
+                        <AbsDimension x="460" y="115"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </HighlightTexture>
+                <PushedTexture name="$parentPushedTexture"
+                               file="Interface\addons\TWEncounterJournal\images\boss_list_normal">
+                    <Size>
+                        <AbsDimension x="460" y="115"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </PushedTexture>
+                <Size>
+                    <AbsDimension x="295" y="50"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-30" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name="$parentName" inherits="GameFontNormalLarge"
+                                    justifyH="LEFT"
+                                    justifyV="CENTER"
+                                    text="Anub Arak">
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="110" y="-10"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsDimension x="165" y="32"/>
+                            </Size>
+                        </FontString>
+                        <Texture name="$parentIcon"
+                                 file="Interface\addons\TWEncounterJournal\images\boss\ui-ej-boss-ragnaros">
+                            <Size>
+                                <AbsDimension x="120" y="60"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="14"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        BossButton_OnClick(this:GetID())
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="TWEJExtraBossTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="128" y="64"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPRIGHT">
+                <Offset>
+                    <AbsDimension x="23" y="-80"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Layers>
+        </Layers>
+        <Frames>
+            <Button name="$parentButton" inherits="UIPanelButtonTemplate" text="">
+                <NormalTexture name="$parentNormalTexture"
+                               file="Interface\addons\TWEncounterJournal\images\extra_boss_normal">
+                    <Size>
+                        <AbsDimension x="128" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+                <HighlightTexture name="$parentHighlightTexture" alphaMode="ADD"
+                                  file="Interface\addons\TWEncounterJournal\images\boss\ui-ej-boss-ragnaros">
+                    <TexCoords left="1" right="0" top="0" bottom="1"/>
+                    <Size>
+                        <AbsDimension x="128" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="-30" y="12"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </HighlightTexture>
+                <PushedTexture name="$parentPushedTexture"
+                               file="Interface\addons\TWEncounterJournal\images\extra_boss_selected">
+                    <Size>
+                        <AbsDimension x="128" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </PushedTexture>
+                <Size>
+                    <AbsDimension x="128" y="64"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="70" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        <Texture name="$parentIcon"
+                                 file="Interface\addons\TWEncounterJournal\images\boss\ui-ej-boss-ragnaros">
+                            <TexCoords left="1" right="0" top="0" bottom="1"/>
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="-30" y="12"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        BossButton_OnClick(this:GetID())
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="TWEJBossAbilityTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="290" y="30"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT">
+                <Offset>
+                    <AbsDimension x="0" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Frames>
+            <Button name="$parentButton" inherits="UIPanelButtonTemplate" text="">
+                <NormalTexture inherits=""/>
+                <PushedTexture inherits=""/>
+                <Size>
+                    <AbsDimension x="284" y="32"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture name="$parentBackground" hidden="true"
+                                 file="Interface\addons\TWEncounterJournal\images\ability_bg">
+                            <Size>
+                                <AbsDimension x="280" y="128"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="3" y="-25"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="BORDER">
+                        <Texture name="$parentBarBackground"
+                                 file="Interface\addons\TWEncounterJournal\images\ability_bar">
+                            <Size>
+                                <AbsDimension x="512" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT"/>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="ARTWORK">
+                        <Texture name="$parentAbilityIcon"
+                                 file="Interface\Icons\Spell_Shadow_AuraOfDarkness">
+                            <Size>
+                                <AbsDimension x="16" y="16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="10" y="2"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+
+                        <FontString name="$parentAbilityTitle" inherits="GameFontNormal"
+                                    text="Ability Title" justifyH="LEFT">
+                            <Size>
+                                <AbsDimension x="300" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="35" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                        <FontString name="$parentAbilityDescription" inherits="GameFontBlack"
+                                    justifyV="TOP" justifyH="LEFT" hidden="true"
+                                    text="45 yd range — Inflicts 18,850 to 21,150 (25: 28,275 to 31,725) Fire damage to enemies in a cone in front of the caster. 2 sec cast">
+                            <Color r="0.25" g="0.1484375" b=".02" a="1"/>
+                            <Size>
+                                <AbsDimension x="260" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="15" y="-35"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                    </Layer>
+
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        AbilityToggle_OnClick(this:GetName())
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="TWEJBossLootTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="290" y="48"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPRIGHT">
+                <Offset>
+                    <AbsDimension x="0" y="-10"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Frames>
+            <Button name="$parentButton" inherits="UIPanelButtonTemplate" text="">
+                <NormalTexture name="$parentNormalTexture" inherits="" file="Interface\Icons\Inv_Gauntlets_05"/>
+                <PushedTexture name="$parentPushedTexture" inherits="" file="Interface\Icons\Inv_Gauntlets_05"/>
+                <Size>
+                    <AbsDimension x="40" y="40"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture name="$parentBackground"
+                                 file="Interface\addons\TWEncounterJournal\images\loot_bg">
+                            <Size>
+                                <AbsDimension x="496" y="58"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="-86" y="8"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="BORDER">
+                    </Layer>
+                    <Layer level="ARTWORK">
+                        <FontString name="$parentLootTitle" inherits="GameFontNormal"
+                                    text="|cff69ccf0Loot Title" justifyH="LEFT">
+                            <Size>
+                                <AbsDimension x="300" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="46" y="6"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                        <FontString name="$parentLootType" inherits="GameFontBlack"
+                                    text="Two-Hand" justifyH="LEFT">
+                            <Color r="0.13" g="0.07" b=".01" a="0.8"/>
+                            <Size>
+                                <AbsDimension x="100" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="46" y="-10"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                        <FontString name="$parentLootClass" inherits="GameFontBlack"
+                                    text="Staff" justifyH="RIGHT">
+                            <Color r="0.13" g="0.07" b=".01" a="0.8"/>
+                            <Size>
+                                <AbsDimension x="140" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="RIGHT">
+                                    <Offset>
+                                        <AbsDimension x="240" y="-10"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+
+                    </Layer>
+
+
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        <!--                                                        AbilityToggle_OnClick(this:GetName())-->
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="TWEJSearchResultTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="612" y="32"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPRIGHT">
+                <Offset>
+                    <AbsDimension x="0" y="-340"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Frames>
+            <Button name="$parentButton" inherits="UIPanelButtonTemplate" text="">
+                <NormalTexture name="$parentNormalTexture" inherits=""/>
+                <PushedTexture name="$parentPushedTexture" inherits=""/>
+                <HighlightTexture name="$parentPushedTexture" alphaMode="ADD"
+                                  file="Interface\addons\TWEncounterJournal\images\result_bg">
+                    <Size>
+                        <AbsDimension x="1050" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </HighlightTexture>
+                <Size>
+                    <AbsDimension x="812" y="22"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="-110" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <Texture name="$parentUIPaper"
+                                 file="Interface\addons\TWEncounterJournal\images\result_bg">
+                            <Size>
+                                <AbsDimension x="1050" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        <FontString name="$parentResultName" inherits="GameFontNormal" text="Abilities"
+                                    justifyH="LEFT" justifyV="CENTER">
+                            <Size>
+                                <AbsDimension x="300" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="50" y="-1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <FontString name="$parentResultType" inherits="GameFontNormal" text="Abilities"
+                                    justifyH="LEFT" justifyV="CENTER">
+                            <Size>
+                                <AbsDimension x="200" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="450" y="-1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                    </Layer>
+                </Layers>
+<!--                <Scripts>-->
+<!--                    <OnClick>-->
+<!--                        LoadFromResults_OnClick(this:GetID())-->
+<!--                    </OnClick>-->
+<!--                </Scripts>-->
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="TWEJ" hidden="false" toplevel="true" parent="UIParent" movable="true"
+           enableMouse="true">
+        <Size>
+            <AbsDimension x="740" y="512"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER">
+                <Offset>
+                    <AbsDimension x="0" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parentUITopLeft"
+                         file="Interface\addons\TWEncounterJournal\images\UI-Character-General-TopLeft">
+                    <Size>
+                        <AbsDimension x="256" y="256"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT"/>
+                    </Anchors>
+                </Texture>
+
+                <Texture name="$parentUIBottomRight"
+                         file="Interface\addons\TWEncounterJournal\images\UI-Character-General-TopRight">
+                    <Size>
+                        <AbsDimension x="128" y="256"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="642" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+
+                <Texture name="$parentUIBottomLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomLeft">
+                    <Size>
+                        <AbsDimension x="256" y="256"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="-256"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+
+                <Texture name="$parentUIBottomRight"
+                         file="Interface\PaperDollInfoFrame\UI-Character-General-BottomRight">
+                    <Size>
+                        <AbsDimension x="128" y="256"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="642" y="-256"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+
+                <Texture name="$parentUIMiddleTop"
+                         file="Interface\addons\TWEncounterJournal\images\UI-middle">
+                    <Size>
+                        <AbsDimension x="512" y="128"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="141" y="-1"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+
+                <Texture name="$parentUIMiddleBottom"
+                         file="Interface\addons\TWEncounterJournal\images\UI-middle-bottom">
+                    <Size>
+                        <AbsDimension x="386" y="128"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="256" y="-377"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="BORDER">
+                <Texture name="$parentTabBackground" file="Interface\addons\TWEncounterJournal\images\tab_background">
+                    <Size>
+                        <AbsDimension x="512" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="75" y="-36"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString name="$parentTitleText" inherits="GameFontNormal"
+                            text="Turtle WoW Encounter Journal">
+                    <Size>
+                        <AbsDimension x="512" y="14"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP" relativePoint="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="-18"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame name="$parentHomeButtonFrame" framestrata="DIALOG">
+                <Size>
+                    <AbsDimension x="128" y="32"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="79" y="-40"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parentHome" inherits="UIPanelButtonTemplate" text="">
+                        <NormalTexture name="$parentNormalTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\main_tab_normal">
+                            <Size>
+                                <AbsDimension x="128" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </NormalTexture>
+                        <PushedTexture name="$parentPushedTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\main_tab_pushed">
+                            <Size>
+                                <AbsDimension x="128" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </PushedTexture>
+                        <Size>
+                            <AbsDimension x="128" y="32"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString name="$parentName" inherits="GameFontNormal" text="Home">
+                                    <Anchors>
+                                        <Anchor point="TOP">
+                                            <Offset>
+                                                <AbsDimension x="-3" y="1"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Size>
+                                        <AbsDimension x="128" y="32"/>
+                                    </Size>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Scripts>
+                            <OnClick>
+                                HomeButton_OnClick()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+
+            <Frame name="$parentDungeonButtonFrame" hidden="true" framestrata="HIGH">
+                <Size>
+                    <AbsDimension x="256" y="32"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="139" y="-40"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parentDungeonTab" inherits="UIPanelButtonTemplate" text="">
+                        <NormalTexture name="$parentNormalTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\nav_button2_normal">
+                            <Size>
+                                <AbsDimension x="256" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </NormalTexture>
+                        <PushedTexture name="$parentPushedTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\nav_button2_pushed">
+                            <Size>
+                                <AbsDimension x="256" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </PushedTexture>
+                        <HighlightTexture name="$parentPushedTexture"
+                                          file="Interface\addons\TWEncounterJournal\images\nav_button2_highlight">
+                            <Size>
+                                <AbsDimension x="256" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </HighlightTexture>
+                        <Size>
+                            <AbsDimension x="256" y="28"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString name="$parentName" inherits="GameFontNormal" text="Dungeon" justifyH="LEFT">
+                                    <Anchors>
+                                        <Anchor point="TOP">
+                                            <Offset>
+                                                <AbsDimension x="11" y="-4"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Size>
+                                        <AbsDimension x="130" y="22"/>
+                                    </Size>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Scripts>
+                            <OnClick>
+                                DungeonTabButton_OnClick()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+
+            <Frame name="$parentBossButtonFrame" hidden="true" framestrata="MEDIUM">
+                <Size>
+                    <AbsDimension x="256" y="32"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="320" y="-40"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+
+                    <Button name="$parentBossTab" inherits="UIPanelButtonTemplate" text="">
+                        <NormalTexture name="$parentNormalTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\nav_button_normal">
+                            <Size>
+                                <AbsDimension x="256" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </NormalTexture>
+                        <PushedTexture name="$parentPushedTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\nav_button_pushed">
+                            <Size>
+                                <AbsDimension x="256" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </PushedTexture>
+                        <HighlightTexture name="$parentPushedTexture"
+                                          file="Interface\addons\TWEncounterJournal\images\nav_button2_highlight">
+                            <Size>
+                                <AbsDimension x="256" y="28"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </HighlightTexture>
+                        <Size>
+                            <AbsDimension x="256" y="28"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString name="$parentName" inherits="GameFontNormal" text="Home" justifyH="LEFT">
+                                    <Anchors>
+                                        <Anchor point="TOP">
+                                            <Offset>
+                                                <AbsDimension x="20" y="-4"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Size>
+                                        <AbsDimension x="130" y="22"/>
+                                    </Size>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Scripts>
+                            <OnClick>
+                                BossTabButton_OnClick()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+
+                </Frames>
+            </Frame>
+
+            <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-16" y="-24"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+
+            <EditBox name="$parentSearchEditBox" autoFocus="false" frameStrata="HIGH"
+                     letters="30">
+                <Size>
+                    <AbsDimension x="140" y="24"/>
+                </Size>
+                <TextInsets>
+                    <AbsInset left="20" right="4" top="4" bottom="4"/>
+                </TextInsets>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="585" y="-44"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BORDER">
+                        <Texture file="Interface\addons\TWEncounterJournal\images\ui-searchbox-icon">
+                            <Size>
+                                <AbsDimension x="16" y="16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="6" y="-5"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                          edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                          tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="4" right="4" top="4" bottom="4"/>
+                    </BackgroundInsets>
+                </Backdrop>
+                <Scripts>
+                    <OnShow>
+                        this:ClearFocus()
+                    </OnShow>
+                    <OnEnterPressed>
+                        this:ClearFocus()
+                        SearchBox_OnEnterPressed(this:GetText())
+                        this:SetText("")
+                    </OnEnterPressed>
+                    <OnEscapePressed>
+                        this:ClearFocus()
+                    </OnEscapePressed>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="256"/>
+            </EditBox>
+
+            <Frame name="$parentBrowseFrame" hidden="true">
+                <Size>
+                    <AbsDimension x="740" y="512"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BORDER">
+                        <Texture name="$parentUIBg"
+                                 file="Interface\addons\TWEncounterJournal\images\ui-ej-classic">
+                            <Size>
+                                <AbsDimension x="704" y="354"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="21" y="-76"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="ARTWORK">
+                        <FontString name="TWName" text="Turtle WoW"
+                                    justifyH="LEFT" justifyV="CENTER" font="Fonts\MORPHEUS.TTF">
+                            <Color r="0.8" g="0.7" b="0" a="1"/>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <FontHeight val="20"/>
+                            <Size>
+                                <AbsDimension x="280" y="90"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="40" y="-50"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+
+                    <Button name="TWEJCat1" inherits="UIPanelButtonTemplate" text="Dungeons">
+                        <NormalTexture name="$parentNormalTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\cat_tab_inactive">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="20"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </NormalTexture>
+                        <HighlightTexture
+                                file="Interface\addons\TWEncounterJournal\images\ui-character-tab-highlight-yellow"
+                                alphaMode="ADD">
+                            <Size>
+                                <AbsDimension x="110" y="55"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </HighlightTexture>
+                        <PushedTexture name="$parentPushedTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\cat_tab_inactive">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="20"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </PushedTexture>
+                        <Size>
+                            <AbsDimension x="128" y="64"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-340" y="-70"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                selectCat_OnClick(1)
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+
+                    <Button name="TWEJCat2" inherits="UIPanelButtonTemplate" text="Raids">
+                        <NormalTexture name="$parentNormalTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\cat_tab_inactive">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="20"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </NormalTexture>
+                        <HighlightTexture
+                                file="Interface\addons\TWEncounterJournal\images\ui-character-tab-highlight-yellow"
+                                alphaMode="ADD">
+                            <Size>
+                                <AbsDimension x="110" y="55"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </HighlightTexture>
+                        <PushedTexture name="$parentPushedTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\cat_tab_inactive">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="20"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </PushedTexture>
+                        <Size>
+                            <AbsDimension x="98" y="48"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT" relativeTo="TWEJCat1" relativePoint="RIGHT">
+                                <Offset>
+                                    <AbsDimension x="20" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                selectCat_OnClick(2)
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+
+                    <Button name="TWEJCat3" inherits="UIPanelButtonTemplate" text="World Bosses">
+                        <NormalTexture name="$parentNormalTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\cat_tab_inactive">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="20"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </NormalTexture>
+                        <HighlightTexture
+                                file="Interface\addons\TWEncounterJournal\images\ui-character-tab-highlight-yellow"
+                                alphaMode="ADD">
+                            <Size>
+                                <AbsDimension x="110" y="55"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </HighlightTexture>
+                        <PushedTexture name="$parentPushedTexture"
+                                       file="Interface\addons\TWEncounterJournal\images\cat_tab_inactive">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER">
+                                    <Offset>
+                                        <AbsDimension x="0" y="20"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </PushedTexture>
+                        <Size>
+                            <AbsDimension x="100" y="22"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT" relativeTo="TWEJCat2" relativePoint="RIGHT">
+                                <Offset>
+                                    <AbsDimension x="40" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                selectCat_OnClick(3)
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+
+                    <ScrollFrame name="$parentDungeonList" inherits="UIPanelScrollFrameTemplate">
+                        <Size>
+                            <AbsDimension x="678" y="313"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="23" y="-117"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <ScrollChild>
+                            <Frame name="TWENDungeonListChildren">
+                                <Size>
+                                    <AbsDimension x="678" y="306"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="23" y="-118"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                            </Frame>
+                        </ScrollChild>
+                    </ScrollFrame>
+                </Frames>
+            </Frame>
+
+            <Frame name="$parentDungeonFrame" hidden="true">
+                <Size>
+                    <AbsDimension x="740" y="442"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                            <AbsDimension x="0" y="35"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture name="$parentUIPaper"
+                                 file="Interface\addons\TWEncounterJournal\images\paper">
+                            <Size>
+                                <AbsDimension x="704" y="354"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="21" y="-76"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="BORDER">
+
+                        <Texture name="DungeonLoreBg"
+                                 file="Interface\addons\TWEncounterJournal\images\lorebg\ui-ej-lorebg-default">
+                            <Size>
+                                <AbsDimension x="430" y="430"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPRIGHT">
+                                    <Offset>
+                                        <AbsDimension x="70" y="-80"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="ARTWORK">
+                        <FontString name="DungeonNameText" text="Name"
+                                    justifyH="LEFT" justifyV="CENTER" font="Fonts\MORPHEUS.TTF">
+                            <Color r="0.8" g="0.7" b="0" a="1"/>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <FontHeight val="20"/>
+                            <Size>
+                                <AbsDimension x="280" y="30"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="50" y="-90"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+
+                    <ScrollFrame name="DungeonBossList" inherits="UIPanelScrollFrameTemplate">
+                        <Size>
+                            <AbsDimension x="323" y="291"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="23" y="-139"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <ScrollChild>
+                            <Frame name="DungeonBossListScrollChild">
+                                <Size>
+                                    <AbsDimension x="322" y="111"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="-3" y="0"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Frames>
+                                </Frames>
+                            </Frame>
+
+                        </ScrollChild>
+                    </ScrollFrame>
+
+                    <ScrollFrame name="DungeonLore" inherits="UIPanelScrollFrameTemplate">
+                        <Size>
+                            <AbsDimension x="323" y="80"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="377" y="-350"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+
+                        <ScrollChild>
+                            <Frame name="TWENDungeonChildren">
+                                <Size>
+                                    <AbsDimension x="323" y="1"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="-40" y="1"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="ARTWORK">
+                                        <FontString name="DungeonLoreText" inherits="GameFontBlack" text="Loretext"
+                                                    justifyH="LEFT" justifyV="TOP">
+                                            <Color r="0.13" g="0.07" b=".01" a="1"/>
+                                            <Size>
+                                                <AbsDimension x="290" y="0"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT">
+                                                    <Offset>
+                                                        <AbsDimension x="15" y="0"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                </Frames>
+                            </Frame>
+
+
+                        </ScrollChild>
+                    </ScrollFrame>
+
+                </Frames>
+            </Frame>
+
+            <Frame name="$parentBossFrame" hidden="false">
+                <Size>
+                    <AbsDimension x="770" y="512"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                            <AbsDimension x="15" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BORDER">
+                        <Texture name="$parentUIPaper"
+                                 file="Interface\addons\TWEncounterJournal\images\paper_boss">
+                            <Size>
+                                <AbsDimension x="704" y="354"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="21" y="-76"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="ARTWORK">
+
+                        <FontString name="BossNameText"
+                                    text="O o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o "
+                                    justifyH="LEFT" justifyV="CENTER" font="Fonts\MORPHEUS.TTF">
+                            <Color r="0.8" g="0.7" b="0" a="1"/>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <FontHeight val="20"/>
+                            <Size>
+                                <AbsDimension x="200" y="50"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="140" y="-88"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                        <FontString name="BossLootText" text="Loot"
+                                    justifyH="LEFT" justifyV="CENTER" font="Fonts\MORPHEUS.TTF">
+                            <Color r="0.8" g="0.7" b="0" a="1"/>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <FontHeight val="20"/>
+                            <Size>
+                                <AbsDimension x="200" y="50"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPRIGHT">
+                                    <Offset>
+                                        <AbsDimension x="-160" y="-88"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                        <FontString name="FilterLoot" inherits="GameFontNormal" text="Usable"
+                                    justifyH="LEFT" justifyV="TOP">
+                            <Size>
+                                <AbsDimension x="100" y="30"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="670" y="-110"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                    </Layer>
+                    <Layer level="OVERLAY">
+
+                        <Texture name="BossIcon"
+                                 file="Interface\addons\TWEncounterJournal\images\boss\ui-ej-boss-default">
+                            <Size>
+                                <AbsDimension x="128" y="64"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="20" y="-76"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+
+                    </Layer>
+
+                </Layers>
+                <Frames>
+
+<!--                    <DressUpModel name="modeltest" hidden="false" scale="1" enableMouse="true">-->
+<!--                        <Size>-->
+<!--                            <AbsDimension x="350" y="355"/>-->
+<!--                        </Size>-->
+<!--                        <Anchors>-->
+<!--                            <Anchor point="TOPLEFT">-->
+<!--                                <Offset>-->
+<!--                                    <AbsDimension x="20" y="-76"/>-->
+<!--                                </Offset>-->
+<!--                            </Anchor>-->
+<!--                        </Anchors>-->
+<!--                        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"-->
+<!--                                  tile="false">-->
+<!--                        </Backdrop>-->
+<!--                        <Scripts>-->
+<!--                            <OnUpdate>-->
+<!--                                &lt;!&ndash;                            XmogModel_OnUpdate(arg1, this);&ndash;&gt;-->
+<!--                            </OnUpdate>-->
+<!--                            <OnMouseWheel>-->
+<!--                                &lt;!&ndash;                                MVmodelWHeel(this, arg1)&ndash;&gt;-->
+<!--                            </OnMouseWheel>-->
+<!--                        </Scripts>-->
+<!--                        <Frames>-->
+<!--                        </Frames>-->
+<!--                    </DressUpModel>-->
+
+                    <ScrollFrame name="$parentBossLore" inherits="UIPanelScrollFrameTemplate">
+                        <Size>
+                            <AbsDimension x="323" y="290"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="23" y="-139"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <ScrollChild>
+                            <Frame name="BossLoreChildren">
+                                <Size>
+                                    <AbsDimension x="670" y="100"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="-3" y="0"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="ARTWORK">
+                                        <FontString name="BossLoreText" inherits="GameFontBlack" text="Lor2etext"
+                                                    justifyH="LEFT" justifyV="TOP">
+                                            <Color r="0.13" g="0.07" b=".01" a="1"/>
+                                            <Size>
+                                                <AbsDimension x="300" y="0"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT">
+                                                    <Offset>
+                                                        <AbsDimension x="20" y="-10"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString name="AbilitiesText" inherits="GameFontNormal" text="Abilities"
+                                                    justifyH="LEFT" justifyV="CENTER">
+                                            <Size>
+                                                <AbsDimension x="200" y="30"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeTo="BossLoreText"
+                                                        relativePoint="BOTTOMLEFT">
+                                                    <Offset>
+                                                        <AbsDimension x="10" y="-10"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                    <Layer level="BACKGROUND">
+                                        <Texture name="AbilitiesTextBackground"
+                                                 file="Interface\addons\TWEncounterJournal\images\title_background">
+                                            <Size>
+                                                <AbsDimension x="512" y="55"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="CENTER" relativeTo="AbilitiesText"
+                                                        relativePoint="CENTER">
+                                                    <Offset>
+                                                        <AbsDimension x="45" y="3"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+
+                                </Frames>
+                            </Frame>
+
+
+                        </ScrollChild>
+                    </ScrollFrame>
+
+                    <CheckButton name="FilterLootCheckButton" inherits="OptionsCheckButtonTemplate" checked="false">
+                        <Size>
+                            <AbsDimension x="24" y="24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="RIGHT" relativeTo="FilterLoot" relativePoint="LEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="8"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                if ( this:GetChecked() ) then
+                                PlaySound("igMainMenuOptionCheckBoxOn");
+                                else
+                                PlaySound("igMainMenuOptionCheckBoxOff");
+                                end
+                                BossButton_OnClick(0, true);
+                            </OnClick>
+                        </Scripts>
+
+                    </CheckButton>
+
+                    <ScrollFrame name="$parentBossLoot" inherits="UIPanelScrollFrameTemplate">
+                        <Size>
+                            <AbsDimension x="316" y="290"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-73" y="-139"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <ScrollChild>
+                            <Frame name="TWEJBossLootChildren">
+                                <Size>
+                                    <AbsDimension x="316" y="290"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="-3" y="0"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="ARTWORK">
+
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+
+
+                                </Frames>
+                            </Frame>
+
+                        </ScrollChild>
+                    </ScrollFrame>
+
+                </Frames>
+            </Frame>
+
+            <Frame name="$parentResultsFrame" hidden="true">
+                <Size>
+                    <AbsDimension x="770" y="512"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                            <AbsDimension x="15" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BORDER">
+                        <Texture name="$parentUIBg"
+                                 file="Interface\addons\TWEncounterJournal\images\ui-ej-classic">
+                            <Size>
+                                <AbsDimension x="704" y="354"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="21" y="-76"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                    <Layer level="ARTWORK">
+                        <FontString name="TWEJResultsText" text="Results for: penus"
+                                    justifyH="LEFT" justifyV="CENTER" font="Fonts\MORPHEUS.TTF">
+                            <Color r="0.8" g="0.7" b="0" a="1"/>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <FontHeight val="20"/>
+                            <Size>
+                                <AbsDimension x="280" y="90"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="40" y="-50"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <ScrollFrame name="$parentResults" inherits="UIPanelScrollFrameTemplate">
+                        <Size>
+                            <AbsDimension x="678" y="306"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="23" y="-118"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <ScrollChild>
+                            <Frame name="ResultsChildren">
+                                <Size>
+                                    <AbsDimension x="678" y="306"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="23" y="-118"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Frames>
+
+                                </Frames>
+                            </Frame>
+                        </ScrollChild>
+                    </ScrollFrame>
+                </Frames>
+            </Frame>
+
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                this:RegisterForDrag("LeftButton");
+                this:SetMovable(1);
+                this:SetUserPlaced(true);
+            </OnLoad>
+            <OnDragStart>
+                this:StartMoving();
+                this.isMoving = true;
+            </OnDragStart>
+            <OnDragStop>
+                this:StopMovingOrSizing();
+                this.isMoving = false;
+            </OnDragStop>
+        </Scripts>
+    </Frame>
+
+</Ui>

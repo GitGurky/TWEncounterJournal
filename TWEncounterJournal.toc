@@ -1,0 +1,65 @@
+## Interface: 11200
+## Title: Turtle WoW Encounter Journal
+## Author: Xerron/Er & Gurky
+## Version: 1.0.0.0
+## Notes: Bosses and stuff
+## SavedVariables: TWEJ_TAB
+
+Data\Dungeons\RagefireChasm.lua
+Data\Dungeons\WailingCaverns.lua
+Data\Dungeons\TheDeadmines.lua
+Data\Dungeons\ShadowfangKeep.lua
+Data\Dungeons\BlackfathomDeeps.lua
+Data\Dungeons\TheStockade.lua
+Data\Dungeons\Gnomeregan.lua
+Data\Dungeons\RazorfenKraul.lua
+Data\Dungeons\TheCrescentGrove.lua
+Data\Dungeons\ScarletMonastery.lua
+Data\Dungeons\ScarletMonasteryGraveyard.lua
+Data\Dungeons\ScarletMonasteryLibrary.lua
+Data\Dungeons\ScarletMonasteryArmory.lua
+Data\Dungeons\ScarletMonasteryCathedral.lua
+Data\Dungeons\RazorfenDowns.lua
+Data\Dungeons\Uldaman.lua
+Data\Dungeons\ZulFarrak.lua
+Data\Dungeons\Maraudon.lua
+Data\Dungeons\MaraudonOrange.lua
+Data\Dungeons\MaraudonPurple.lua
+Data\Dungeons\MaraudonPrincess.lua
+Data\Dungeons\SunkenTemple.lua
+Data\Dungeons\BlackrockDepths.lua
+Data\Dungeons\LowerBlackrockSpire.lua
+Data\Dungeons\DireMaul.lua
+Data\Dungeons\DireMaulEast.lua
+Data\Dungeons\DireMaulNorth.lua
+Data\Dungeons\DireMaulWest.lua
+Data\Dungeons\Scholomance.lua
+Data\Dungeons\Stratholme.lua
+Data\Dungeons\StratholmeUndeadDistrict.lua
+Data\Dungeons\StratholmeScarletBastion.lua
+Data\Dungeons.lua
+
+Data\Raids\UpperBlackrockSpire.lua
+Data\Raids\ZulGurub.lua
+Data\Raids\RuinsOfAhnQiraj.lua
+Data\Raids\MoltenCore.lua
+Data\Raids\OnyxiasLair.lua
+Data\Raids\BlackwingLair.lua
+Data\Raids\TempleOfAhnQuraj.lua
+Data\Raids\Naxxramas.lua
+Data\Raids.lua
+
+Data\WorldBosses\Azuregos.lua
+Data\WorldBosses\Emeriss.lua
+Data\WorldBosses\Lethon.lua
+Data\WorldBosses\Taerar.lua
+Data\WorldBosses\Ysondre.lua
+Data\WorldBosses\LordKazzak.lua
+Data\WorldBosses\Concavius.lua
+Data\WorldBosses\Snowball.lua
+Data\WorldBosses\NerubianOverseer.lua
+Data\WorldBosses\DarkReaver.lua
+Data\WorldBosses\Ostarius.lua
+Data\WorldBosses.lua
+
+TWEncounterJournal.xml
